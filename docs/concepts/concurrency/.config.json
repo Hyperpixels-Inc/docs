@@ -16,6 +16,10 @@
     {
       "title": "Shared Objects",
       "url": "shared-objects.md"
+    },
+    {
+      "title": "WaitGroups",
+      "url": "wait-groups.md"
     }
   ]
 }
