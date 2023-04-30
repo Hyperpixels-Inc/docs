@@ -20,7 +20,7 @@ fn do_smth(a f64, b f64) { // ordinary function without return value
 }
 
 fn main() {
-    // do_smth will be run in a separate thread
+	// do_smth will be run in a separate thread
 	spawn do_smth(3, 4)
 }
 ```
@@ -29,6 +29,8 @@ You can also use
 [anonymous functions](../functions/anonymous-and-higher-order-functions.md):
 
 ```v skip
+import math
+
 fn main() {
 	spawn fn (a f64, b f64) {
 		c := math.sqrt(a * a + b * b)
@@ -146,7 +148,7 @@ fn watcher() {
 }
 
 fn main() {
-    spawn watcher()
+	spawn watcher()
 }
 ```
 
@@ -166,8 +168,8 @@ fn watcher() {
 }
 
 fn main() {
-    h := spawn watcher()
-    h.wait()
+	h := spawn watcher()
+	h.wait()
 }
 ```
 
@@ -179,7 +181,7 @@ To change the stack size of a thread, use the `spawn_stack` attribute:
 // 64KB  stack size
 [spawn_stack: 65536]
 fn watcher() {
-    println('hello')
+	println('hello')
 }
 ```
 

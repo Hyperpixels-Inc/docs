@@ -126,16 +126,17 @@ The receiver can check if the channel is closed using the `or` block:
 
 ```v play
 fn main() {
-    ch := chan int{}
-    ch.close()
+	ch := chan int{}
+	ch.close()
 
-    m := <-ch or {
-        println('channel has been closed')
+	m := <-ch or {
+		println('channel has been closed')
 		-1
-    }
+	}
 
 	println(m)
 }
+
 // channel has been closed
 // -1
 ```
@@ -161,14 +162,12 @@ fn main() {
 	for i in 0 .. 5 {
 		ch <- i
 	}
-    ch.close()
+	ch.close()
 
 	for {
-		m := <-ch or {
-			break
-		}
-        println(m)
-    }
+		m := <-ch or { break }
+		println(m)
+	}
 
 	println('done')
 }
