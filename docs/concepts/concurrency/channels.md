@@ -180,7 +180,7 @@ Note that we use an infinite loop until the channel is closed and the `or` block
 > Closing is only necessary when the receiver must be told there are no more values coming,
 > such as to terminate a range loop.
 
-### Channel Select
+## Channel Select
 
 The `select` expression allows monitoring several channels at the same time without a noticeable
 CPU load.
@@ -222,7 +222,7 @@ fn main() {
 }
 ```
 
-#### Timeout branch
+### Timeout branch
 
 The `select` expression can also have a `timeout` branch, which will be executed if none of the
 branches is executed within the specified time.
@@ -250,13 +250,10 @@ fn main() {
 In the example above, the `timeout` branch will be executed in 2 seconds, because nothing will be
 sent to the `ch` channel and the `val := <-ch` branch will not be executed.
 
-#### Else branch
+### Else branch
 
 The `else` branch will execute immediately if none of the channels in the branches are currently
 ready.
-
-> **Note**
-> `else` cannot be used together with `timeout` within the same `select` expression
 
 ```v play
 fn main() {
@@ -275,6 +272,9 @@ fn main() {
 // no values in ch for now
 ```
 
+> **Note**
+> `else` cannot be used together with `timeout` within the same `select` expression
+
 ### Select as an expression
 
 The `select` can be used as an *expression* of type `bool` that becomes `false` if all channels are
@@ -292,7 +292,7 @@ if select {
 }
 ```
 
-### Special Channel Features
+## Special Channel Features
 
 For special purposes, there are some builtin fields and methods:
 
