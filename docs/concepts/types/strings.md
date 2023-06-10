@@ -50,7 +50,7 @@ println('\xc0'[0]) // u8(0xc0)
 Or using octal escape `\###` notation where `#` is an octal digit:
 
 ```v ignore
-println('\141ardvark') == 'aardvark' // true
+println('\141ardvark' == 'aardvark') // true
 ```
 
 Unicode can be specified directly as `\u####` where # is a hex digit and will be converted
