@@ -67,6 +67,21 @@ a, _ := foo()
 
 ## Hoisting
 
+```v
+fn main() {
+    println(add(2, 3))
+    println(sub(2, 3))
+}
+
+fn add(x int, y int) int {
+	return x + y
+}
+
+fn sub(x int, y int) int {
+	return x - y
+}
+```
+
 Functions can be used before their declaration:
 `add` and `sub` are declared after `main`, but can still be called from `main`.
 
