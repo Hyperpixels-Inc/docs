@@ -73,19 +73,6 @@ Functions can be used before their declaration:
 This is true for all declarations in V and eliminates the need for header files
 or thinking about the order of files and declarations.
 
-## Returning multiple values
-
-```v play
-fn foo() (int, int) {
-	return 2, 3
-}
-
-a, b := foo()
-println(a) // 2
-println(b) // 3
-c, _ := foo() // ignore values using `_`
-```
-
 ## Variable number of arguments
 
 You can mark the last parameter of a function with `...`

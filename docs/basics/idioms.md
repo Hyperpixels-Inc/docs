@@ -57,6 +57,19 @@ for index, element in arr {}
 for element in arr {}
 ```
 
+## Returning multiple values
+
+```v ignore
+fn foo() (int, int) {
+	return 2, 3
+}
+
+a, b := foo()
+println(a)
+println(b)
+c, _ := foo() // ignore values using `_`
+```
+
 ## Return value or error
 
 ```v nofmt
