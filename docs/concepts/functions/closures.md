@@ -5,21 +5,25 @@ This means that anonymous functions can inherit variables from the scope they we
 
 ## Variables capture
 
-However, from a large number of languages, captured variables **must be explicitly listed** after
-the `fn` keyword inside square brackets:
+However, unlike a lot of languages, captured variables **must be explicitly listed** after the `fn`
+keyword inside square brackets:
 
 ```v play
-my_int := 1
+num := 1
+str := 'Hello!'
 
-my_closure := fn [my_int] () {
-	//           ^^^^^^^^ this is a list of captured variables
-	println(my_int)
+my_closure := fn [num, str] () {
+	//           ^^^^^^^^^^ this is a list of captured variables
+	println(num)
+	println(str)
 }
 
-my_closure() // 1
+my_closure()
+// 1
+// Hello!
 ```
 
-Inherited variables are **copied** when the anonymous function is created.
+Captured variables are **copied** when the anonymous function is created.
 This means that if the original variable is modified after the creation of the function,
 the modification won't be reflected in the function.
 
@@ -33,7 +37,7 @@ println(func() == 1) // true
 
 i = 123
 
-println(func() == 1) // still true
+println(func() == 1) // true, captured variable `i` still has the value 1
 ```
 
 However, the variable can be modified inside the anonymous function.
