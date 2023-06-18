@@ -40,6 +40,19 @@ color := Color.red
 println(int(color)) // 0
 ```
 
+To get the string representation of an enum field, use `.str()`:
+
+```v play
+enum Color {
+	red
+	green
+	blue
+}
+
+color := Color.red
+println(color.str()) // red
+```
+
 Sequence numbers start at 0 and increase by 1 for each next enum field.
 
 For each field, you can specify your own value:
