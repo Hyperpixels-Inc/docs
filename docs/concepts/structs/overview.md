@@ -234,13 +234,75 @@ immut_person.birthday()
 //^^^^^^^^^^ `immut_person` is immutable, declare it with `mut` to make it mutable
 ```
 
-Note that in this case the receiver becomes implicitly referential, i.e.
+Note that in this case the receiver becomes implicitly referential, i.e.,
 its type becomes `&Person` instead of `Person`.
 This means that the structure instance will not be copied when the method
 is called, but a pointer to it will be passed.
 
 > **Note**
 > The `mut p &Person` entry is currently prohibited.
+
+## Static methods
+
+Structs can also have **static** methods. To set them, a special syntax is used:
+
+```v skip
+struct Node {}
+
+struct Tree {
+	root &Node
+}
+
+fn Tree.build() &Tree {
+// ^^^^
+// structure name to which the static method belongs
+	return &Tree{}
+}
+```
+
+Static methods are defined for the structure, not for the instance of the structure.
+This means that you do not need to instantiate the struct to call a static method.
+
+```v
+tree := Tree.build()
+```
+
+With static methods, you can create separate namespaces for functions that operate on a particular
+structure.
+
+Using static methods, you can prevent cluttering the module's scope with unnecessary functions that
+are not required independently from the structure.
+
+## Constructors
+
+Unlike other languages, V does not have the concept of constructors.
+But you can use static methods to simulate a constructor.
+
+By convention, such methods are called `new`:
+
+```v skip
+struct Person {
+	name     string
+	age      int
+	is_adult bool
+}
+
+fn Person.new(name string, age int) Person {
+	return Person{
+		name: name
+		age: age
+		is_adult: age >= 18
+	}
+}
+```
+
+Calling such a method is no different from calling a static method:
+
+```v
+p := Person.new('Bob', 20)
+```
+
+See also [noinit structs](#[noinit]-structs).
 
 ## Allocate structs on the heap
 
@@ -413,12 +475,14 @@ fn main() {
 }
 ```
 
+See also [constructors](#constructors).
+
 ## Structs with reference fields
 
 Structs with references require explicitly setting the initial value to a
 reference value unless the struct already defines its own initial value.
 
-Zero-value references, or nil pointers, will **NOT** be supported in the future,
+Zero-value references, or nil pointers will **NOT** be supported in the future,
 for now data structures such as Linked Lists or Binary Trees that rely on reference
 fields that can use the value `0`, understanding that it is unsafe, and that it can
 cause a panic.
