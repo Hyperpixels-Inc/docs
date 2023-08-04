@@ -22,8 +22,6 @@ isize, usize // platform-dependent,
              // to reference any location in memory
 
 voidptr // this one is mostly used for C interoperability
-
-any // similar to C's void* and Go's interface{}
 ```
 
 > **Note**
