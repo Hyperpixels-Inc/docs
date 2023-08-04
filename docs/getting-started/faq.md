@@ -51,8 +51,9 @@ package management.
 To run `foo()` concurrently, just call it with `spawn`, like `spawn foo()`.
 Right now it launches the function in a new system thread.
 
-Coroutines and the scheduler will be implemented in the future, and writing a concurrency
-code in V is going to be the same as in Go — with a `go` keyword, like `go foo()`.
+Coroutines (lightweight threads managed by the runtime) and a scheduler are in the implementation
+phase. Writing concurrent code will be similar in V as it is in Go - using the keyword `go` to
+launch a coroutine, like `go foo()`.
 
 See [concurrency](../concepts/concurrency.md) article for more details.
 
