@@ -182,7 +182,7 @@ You can also add all the elements of another array using it:
 
 ```v play
 mut nums := [1, 2, 3]
-nums << [5, 6, 7]
+nums << [4, 5, 6, 7]
 println(nums) // [1, 2, 3, 4, 5, 6, 7]
 ```
 
