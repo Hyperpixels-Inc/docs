@@ -341,9 +341,12 @@ As with normal `if` expressions, you can use the `in` statement:
 
 ```v nofmt failcompile
 $if field.typ in [string, int] {
-	println('${field.name} is of type int or float')
+	println('${field.name} is of type string or int')
 }
 ```
+
+> **Note**
+> Although `i32` is defined as a `type alias i32 = int`, they are treated as separate types. Therefore, a field of type `i32` will **not** match either `is int` or `in [int]`. The same holds true in reverse.
 
 For the convenience of checks, V defines some type constants:
 
