@@ -200,7 +200,7 @@ The path parameter is relative to the `/templates` directory in the correspondin
 **index.html:**
 
 ```html
-<div>@include 'header/base'</div>
+<div>@include 'headers/base'</div>
 ```
 
 > **Note**
